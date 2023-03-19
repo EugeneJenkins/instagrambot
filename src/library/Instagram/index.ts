@@ -1,15 +1,13 @@
 import puppeteer, {Page, Protocol} from "puppeteer";
 import InstagramLogin from "./InstagramLogin";
+import InstagramProfile from "./InstagramProfile";
 
 
 class Instagram {
     public static endpoint = 'https://www.instagram.com/';
 
-    public instagramLogin: InstagramLogin
     private readonly headless: boolean;
     private page: Page;
-
-    // private session: array;
 
     constructor(headless = true) {
         this.headless = headless;
@@ -31,6 +29,13 @@ class Instagram {
     public async login(username: string, password: string): Promise<void> {
         const login = new InstagramLogin(this.page);
         await login.auth(username, password);
+    }
+
+    public async findUser(userName: string): Promise<InstagramProfile> {
+        const profile = new InstagramProfile(this.page);
+        await profile.findUser(userName);
+
+        return profile;
     }
 }
 

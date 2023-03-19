@@ -11,6 +11,7 @@ class InstagramLogin {
         this.page = page;
     }
 
+    //TODO Нужно добавить проверку успешной авторизации.
     public async auth(username: string, password: string) {
         await this.page.goto(Instagram.endpoint + 'accounts/login/');
         await this.page.waitForSelector(this.getLoginSelector());
