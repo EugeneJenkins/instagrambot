@@ -1,6 +1,6 @@
 import puppeteer, {Page, Protocol} from "puppeteer";
 import InstagramLogin from "./InstagramLogin";
-import InstagramProfile from "./InstagramProfile";
+import InstagramProfile from "./InstrgramProfile";
 
 
 class Instagram {
@@ -16,6 +16,8 @@ class Instagram {
     public async run() {
         const browser = await puppeteer.launch({headless: this.headless});
         this.page = await browser.newPage();
+        await this.page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36');
+        await this.page.setViewport({width: 390, height: 844, deviceScaleFactor: 3});
     }
 
     public async getSession(): Promise<Protocol.Network.Cookie[]> {

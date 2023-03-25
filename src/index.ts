@@ -19,5 +19,5 @@ import {sleep} from "./Utils/CommonUtils";
 
     await sleep(2);
     const user = await instagram.findUser('eugene_jenkins_');
-    await user.directMessage()
+    await user.getFirstFollowers(50)
 })()

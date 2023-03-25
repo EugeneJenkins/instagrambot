@@ -1,5 +1,5 @@
 import {ElementHandle, Page} from "puppeteer";
-import {sleep} from "../../Utils/CommonUtils";
+import {sleep} from "../../../Utils/CommonUtils";
 
 class InstagramDirectMessage {
     private readonly messageSelector = '.xjqpnuy';
@@ -13,14 +13,7 @@ class InstagramDirectMessage {
     }
 
     public async sendMessage(message: string) {
-        const messageButton = await this.getMessageButton();
-
-        if (!messageButton) {
-            console.log('Cant find message btn')
-            return;
-        }
-
-        await messageButton.click();
+        await this.openDirectMessage();
         await sleep(2);
 
         await this.writeText(message);
@@ -30,11 +23,14 @@ class InstagramDirectMessage {
 
     //TODO check if it possible
     private async openDirectMessage(): Promise<void> {
-        const msgButton = await this.getMessageButton()
+    const messageButton = await this.getMessageButton();
 
-        if (msgButton) {
-            await msgButton.click();
+        if (!messageButton) {
+            console.log('Cant find message btn')
+            return;
         }
+
+        await messageButton.click()
     }
 
     private async getMessageButton() {
