@@ -7,12 +7,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "generate": "ts-node bin/generateAcc.ts"
   },
   "keywords": [],
   "dependencies": {
     "dotenv": "^16.0.3",
-    "puppeteer": "^19.7.5"
+    "mysql2": "^3.2.0",
+    "node-fetch": "^3.3.1",
+    "puppeteer": "^19.7.5",
+    "sequelize": "^6.30.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.21",
